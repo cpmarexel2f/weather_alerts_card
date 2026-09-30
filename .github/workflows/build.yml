@@ -24,6 +24,16 @@ jobs:
           node-version: 24
           cache: 'npm'
       - run: npm ci
+
+      # The browser test project drives headless Chromium through Playwright.
+      # A headless launch runs the headless shell, so that is the only build
+      # fetched (--only-shell), about 5 s. No --with-deps: the runner image
+      # already has every library the shell links (it ships Chrome), and all
+      # apt adds is fonts and mesa upgrades, 32 MB that took 3 min on a slow
+      # mirror. No actions/cache either: a restore measured 3 s, so a hit
+      # saved 2 s and a miss cost 4 s more for the save (#318).
+      - run: npx playwright install --only-shell chromium
+
       - run: npm run lint
       - run: npm run test
       - run: npm run build

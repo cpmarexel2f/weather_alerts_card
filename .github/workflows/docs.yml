@@ -18,7 +18,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # ~90 s normally: Chromium install plus every figure rendered headless.
+    # ~40 s normally: every figure rendered headless. The apt step behind
+    # --with-deps is the variable part and has taken 3 min on a slow mirror.
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
@@ -29,9 +30,12 @@ jobs:
       - run: npm ci
 
       # The figures are rendered from the real card in headless Chromium, so the
-      # docs build needs a browser. Scoped to this workflow — build.yml and
-      # release.yml stay Playwright-free.
-      - run: npx playwright install --with-deps chromium
+      # docs build needs a browser. A headless launch runs the headless shell,
+      # so full Chrome is never fetched (--only-shell). --with-deps stays here,
+      # unlike build.yml: the harness pages fall back to system fonts and the
+      # apt set carries fonts, so dropping it could change the figures.
+      # release.yml stays Playwright-free.
+      - run: npx playwright install --with-deps --only-shell chromium
 
       # Builds dist/, renders every figure, and stages them in docs/public/img/.
       # DOCS_MOTION is deliberately unset: the motion capture is still being
