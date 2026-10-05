@@ -1,6 +1,6 @@
 import type { TranslationMap } from './types';
 
-export const sr-Latn: TranslationMap = {
+export const srLatn: TranslationMap = {
   // Card UI
   'card.no_alerts': 'Nema aktivnih upozorenja.',
   'card.sources_unavailable_named': '{name} je nedostupan',
