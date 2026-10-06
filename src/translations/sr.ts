@@ -43,14 +43,14 @@ export const sr: TranslationMap = {
   'progress.compact_expired': 'истекло пре {time}',
 
   // Relative time
-  'time.just_now': 'Управо сада',
-  'time.in_less_than_1m': 'За <1 мин',
-  'time.minutes_ago': 'Пре {m} мин',
-  'time.in_minutes': 'За {m} мин',
-  'time.hours_ago': 'Пре {dur}',
-  'time.in_hours': 'За {dur}',
-  'time.days_ago': 'Пре {d} д',
-  'time.in_days': 'За {d} д',
+  'time.just_now': 'управо сада',
+  'time.in_less_than_1m': 'за <1 мин',
+  'time.minutes_ago': 'пре {m} мин',
+  'time.in_minutes': 'за {m} мин',
+  'time.hours_ago': 'пре {dur}',
+  'time.in_hours': 'за {dur}',
+  'time.days_ago': 'пре {d} д',
+  'time.in_days': 'за {d} д',
 
   // Badge labels
   'badge.severity_extreme': 'Екстремно',
