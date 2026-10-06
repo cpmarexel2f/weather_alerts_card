@@ -216,5 +216,4 @@ export const sr: TranslationMap = {
   'editor.dismiss_button_style': 'Стил дугмета',
   'editor.dismiss_button_style_icon': 'Само икона',
   'editor.dismiss_button_style_labeled': 'Икона и ознака',
-	
 };
